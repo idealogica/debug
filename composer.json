@@ -1,0 +1,32 @@
+{
+    "name": "idealogica/debug",
+    "description": "Debugging tools: Symfony VarDumper and FirePHP in one package.",
+    "keywords": ["debug", "dumper", "var_dump", "print_r", "debugging", "var-dumper", "firephp"],
+    "homepage": "https://github.com/idealogica/debug",
+    "license": "MIT",
+    "authors":
+    [
+        {
+            "name": "Konstatin Nikiforov",
+            "email": "ok@idealogica.ru",
+            "homepage": "http://www.idealogica.ru"
+        }
+    ],
+    "require":
+    {
+        "php": ">=5.5.9",
+        "symfony/var-dumper": "~3.0.1",
+        "firephp/firephp-core": "~0.4.0"
+    },
+    "autoload":
+    {
+        "files":
+        [
+            "src/debug.php"
+        ]
+    },
+    "config":
+    {
+        "preferred-install": "dist"
+    }
+}
