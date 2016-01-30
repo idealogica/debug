@@ -17,7 +17,7 @@ if(!function_exists('dd'))
 if(!function_exists('var_dd'))
 {
     /**
-     * Dumps given arguments using var_dump build-in function and stops execution.
+     * Dumps given arguments using var_dump (build-in PHP function) and stops execution.
      *
      * @param mixed $var
      */
@@ -31,7 +31,7 @@ if(!function_exists('var_dd'))
 if(!function_exists('js_dump'))
 {
     /**
-     * Dumps given arguments using Javascript console::log.
+     * Dumps given arguments using Javascript (console::log).
      *
      * @param mixed $var
      */
@@ -50,7 +50,7 @@ if(!function_exists('js_dump'))
 if(!function_exists('js_dd'))
 {
     /**
-     * Dumps given arguments using Javascript console::log and stops execution.
+     * Dumps given arguments using Javascript (console::log) and stops execution.
      *
      * @param mixed $var
      */
