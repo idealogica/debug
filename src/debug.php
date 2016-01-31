@@ -183,7 +183,7 @@ if(!function_exists('_fb_dump'))
      */
     function _fb_dump($var)
     {
-        call_user_func_array('fb_dump', func_get_args());
+        call_user_func_array('fb_dd', func_get_args());
     }
 }
 
