@@ -14,6 +14,33 @@ if(!function_exists('dd'))
     }
 }
 
+if(!function_exists('_dump'))
+{
+    /**
+     * Alias to dd().
+     *
+     * @param mixed $var
+     */
+    function _dump($var)
+    {
+        call_user_func_array('dd', func_get_args());
+    }
+}
+
+if(!function_exists('trace'))
+{
+    /**
+     * Prints backtrace using symfony/var-dumper.
+     *
+     * @param mixed $var
+     */
+    function trace()
+    {
+        $e = new Exception;
+        dump($e->getTraceAsString());
+    }
+}
+
 if(!function_exists('var_dd'))
 {
     /**
@@ -25,6 +52,33 @@ if(!function_exists('var_dd'))
     {
         call_user_func_array('var_dump', func_get_args());
         die();
+    }
+}
+
+if(!function_exists('_var_dump'))
+{
+    /**
+     * Alias to var_dd().
+     *
+     * @param mixed $var
+     */
+    function _var_dump($var)
+    {
+        call_user_func_array('var_dd', func_get_args());
+    }
+}
+
+if(!function_exists('var_trace'))
+{
+    /**
+     * Prints backtrace using built-in print_r function.
+     *
+     * @param mixed $var
+     */
+    function var_trace()
+    {
+        $e = new Exception;
+        print_r($e->getTraceAsString());
     }
 }
 
@@ -61,6 +115,34 @@ if(!function_exists('js_dd'))
     }
 }
 
+if(!function_exists('_js_dump'))
+{
+    /**
+     * Alias to js_dd().
+     *
+     * @param mixed $var
+     */
+    function _js_dump($var)
+    {
+        call_user_func_array('js_dd', func_get_args());
+    }
+}
+
+if(!function_exists('js_trace'))
+{
+    /**
+     * Prints backtrace using Javascript (console::log).
+     *
+     * @param mixed $var
+     */
+    function js_trace()
+    {
+        $e = new Exception;
+        js_dump($e->getTraceAsString());
+    }
+}
+
+
 if(!function_exists('fb_dump'))
 {
     /**
@@ -89,5 +171,31 @@ if(!function_exists('fb_dd'))
     {
         call_user_func_array('fb_dump', func_get_args());
         die();
+    }
+}
+
+if(!function_exists('_fb_dump'))
+{
+    /**
+     * Alias to fb_dd().
+     *
+     * @param mixed $var
+     */
+    function _fb_dump($var)
+    {
+        call_user_func_array('_fb_dump', func_get_args());
+    }
+}
+
+if(!function_exists('fb_trace'))
+{
+    /**
+     * Prints backtrace using using FirePHP.
+     *
+     * @param mixed $var
+     */
+    function fb_trace()
+    {
+        FB::trace('Backtrace');
     }
 }
