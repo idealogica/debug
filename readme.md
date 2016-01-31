@@ -1,5 +1,9 @@
 # Debugging tools: Symfony VarDumper and FirePHP in one package
 
+## Installation
+
+`composer require idealogica/debug:~1.0.0`
+
 ## How to use?
 
 There are few global functions provided by this package that can be used for any kind of debugging:
