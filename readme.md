@@ -44,7 +44,7 @@ Dumps given arguments using FirePHP.
 Dumps given arguments using FirePHP and stops execution.
 
 #### fb_trace()
-Sends backtrace using using FirePHP.
+Sends backtrace using FirePHP.
 
 ## License
 
