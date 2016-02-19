@@ -209,6 +209,8 @@ if(!function_exists('profile'))
 {
     /**
      * Calculates code execution time. Call it twice to get time in seconds between these calls.
+     *
+     * @return string
      */
     function profile()
     {
