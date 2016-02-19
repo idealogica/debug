@@ -30,14 +30,19 @@ if(!function_exists('_dump'))
 if(!function_exists('trace'))
 {
     /**
-     * Prints backtrace using symfony/var-dumper.
+     * Prints backtrace in HTML or CLI mode.
      *
      * @param mixed $var
      */
     function trace()
     {
+        $output = '';
         $e = new Exception;
-        dump($e->getTraceAsString());
+        $cli = php_sapi_name() === 'cli';
+        $output .= !$cli ? '<pre style="background-color: black; color: white; padding: 5px; font: 12px Menlo,Monaco,Consolas,monospace;">' : '';
+        $output .= $e->getTraceAsString();
+        $output .= !$cli ? '</pre>' : '';
+        echo($output."\n");
     }
 }
 
@@ -71,14 +76,14 @@ if(!function_exists('_var_dump'))
 if(!function_exists('var_trace'))
 {
     /**
-     * Prints backtrace using built-in print_r function.
+     * Prints backtrace.
      *
      * @param mixed $var
      */
     function var_trace()
     {
         $e = new Exception;
-        print_r($e->getTraceAsString());
+        echo($e->getTraceAsString()."\n");
     }
 }
 
@@ -92,7 +97,7 @@ if(!function_exists('js_dump'))
     function js_dump($var)
     {
         $vars = func_get_args();
-        echo('<script>');
+        echo('<script type="text/javascript">');
         foreach($vars as $var)
         {
             echo('console.log('.json_encode($var).');');
@@ -131,7 +136,7 @@ if(!function_exists('_js_dump'))
 if(!function_exists('js_trace'))
 {
     /**
-     * Prints backtrace using Javascript (console::log).
+     * Sends backtrace using Javascript (console::log).
      *
      * @param mixed $var
      */
@@ -190,12 +195,27 @@ if(!function_exists('_fb_dump'))
 if(!function_exists('fb_trace'))
 {
     /**
-     * Prints backtrace using using FirePHP.
+     * Sends backtrace using using FirePHP.
      *
      * @param mixed $var
      */
     function fb_trace()
     {
         FB::trace('Backtrace');
+    }
+}
+
+if(!function_exists('profile'))
+{
+    /**
+     * Calculates code execution time. Call it twice to get time in seconds between these calls.
+     */
+    function profile()
+    {
+        static $before = 0;
+        $current = microtime(true);
+        $delta = $before ? number_format($current - $before, 4) : 0;
+        $before = $current;
+        return $delta;
     }
 }
