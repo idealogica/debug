@@ -7,9 +7,12 @@ if(!function_exists('dd'))
      *
      * @param mixed $var
      */
-    function dd($var)
+    function dd($var = null)
     {
-        call_user_func_array('dump', func_get_args());
+        $args = func_get_args();
+        if ($args) {
+            call_user_func_array('dump', $args);
+        }
         die();
     }
 }
@@ -31,8 +34,6 @@ if(!function_exists('trace'))
 {
     /**
      * Prints backtrace in HTML or CLI mode.
-     *
-     * @param mixed $var
      */
     function trace()
     {
@@ -53,9 +54,12 @@ if(!function_exists('var_dd'))
      *
      * @param mixed $var
      */
-    function var_dd($var)
+    function var_dd($var = null)
     {
-        call_user_func_array('var_dump', func_get_args());
+        $args = func_get_args();
+        if ($args) {
+            call_user_func_array('var_dump', $args);
+        }
         die();
     }
 }
@@ -77,8 +81,6 @@ if(!function_exists('var_trace'))
 {
     /**
      * Prints backtrace.
-     *
-     * @param mixed $var
      */
     function var_trace()
     {
@@ -113,9 +115,12 @@ if(!function_exists('js_dd'))
      *
      * @param mixed $var
      */
-    function js_dd($var)
+    function js_dd($var = null)
     {
-        call_user_func_array('js_dump', func_get_args());
+        $args = func_get_args();
+        if ($args) {
+            call_user_func_array('js_dump', $args);
+        }
         die();
     }
 }
@@ -137,8 +142,6 @@ if(!function_exists('js_trace'))
 {
     /**
      * Sends backtrace using Javascript (console::log).
-     *
-     * @param mixed $var
      */
     function js_trace()
     {
@@ -172,9 +175,12 @@ if(!function_exists('fb_dd'))
      *
      * @param mixed $var
      */
-    function fb_dd($var)
+    function fb_dd($var = null)
     {
-        call_user_func_array('fb_dump', func_get_args());
+        $args = func_get_args();
+        if ($args) {
+            call_user_func_array('fb_dump', $args);
+        }
         die();
     }
 }
@@ -196,8 +202,6 @@ if(!function_exists('fb_trace'))
 {
     /**
      * Sends backtrace using using FirePHP.
-     *
-     * @param mixed $var
      */
     function fb_trace()
     {
