@@ -1,7 +1,7 @@
 <?php
 
-if(!function_exists('dd'))
-{
+if (!function_exists('dd')) {
+
     /**
      * Dumps given arguments using symfony/var-dumper and stops execution.
      *
@@ -17,8 +17,8 @@ if(!function_exists('dd'))
     }
 }
 
-if(!function_exists('_dump'))
-{
+if (!function_exists('_dump')) {
+
     /**
      * Alias to dd().
      *
@@ -30,8 +30,8 @@ if(!function_exists('_dump'))
     }
 }
 
-if(!function_exists('trace'))
-{
+if (!function_exists('trace')) {
+
     /**
      * Prints backtrace in HTML or CLI mode.
      */
@@ -40,15 +40,17 @@ if(!function_exists('trace'))
         $output = '';
         $e = new Exception;
         $cli = php_sapi_name() === 'cli';
-        $output .= !$cli ? '<pre style="background-color: black; color: white; padding: 5px; font: 12px Menlo,Monaco,Consolas,monospace;">' : '';
+        $output .= !$cli ?
+            '<pre style="background-color: black; color: white; padding: 5px; font: 12px Menlo,Monaco,Consolas,monospace;">' :
+            '';
         $output .= $e->getTraceAsString();
         $output .= !$cli ? '</pre>' : '';
         echo($output."\n");
     }
 }
 
-if(!function_exists('var_dd'))
-{
+if (!function_exists('var_dd')) {
+
     /**
      * Dumps given arguments using var_dump (build-in PHP function) and stops execution.
      *
@@ -64,8 +66,8 @@ if(!function_exists('var_dd'))
     }
 }
 
-if(!function_exists('_var_dump'))
-{
+if (!function_exists('_var_dump')) {
+
     /**
      * Alias to var_dd().
      *
@@ -77,8 +79,8 @@ if(!function_exists('_var_dump'))
     }
 }
 
-if(!function_exists('var_trace'))
-{
+if (!function_exists('var_trace')) {
+
     /**
      * Prints backtrace.
      */
@@ -89,8 +91,8 @@ if(!function_exists('var_trace'))
     }
 }
 
-if(!function_exists('js_dump'))
-{
+if (!function_exists('js_dump')) {
+
     /**
      * Dumps given arguments using Javascript (console::log).
      *
@@ -100,16 +102,15 @@ if(!function_exists('js_dump'))
     {
         $vars = func_get_args();
         echo('<script type="text/javascript">');
-        foreach($vars as $var)
-        {
+        foreach ($vars as $var) {
             echo('console.log('.json_encode($var).');');
         }
         echo('</script>');
     }
 }
 
-if(!function_exists('js_dd'))
-{
+if (!function_exists('js_dd')) {
+
     /**
      * Dumps given arguments using Javascript (console::log) and stops execution.
      *
@@ -125,8 +126,8 @@ if(!function_exists('js_dd'))
     }
 }
 
-if(!function_exists('_js_dump'))
-{
+if (!function_exists('_js_dump')) {
+
     /**
      * Alias to js_dd().
      *
@@ -138,8 +139,8 @@ if(!function_exists('_js_dump'))
     }
 }
 
-if(!function_exists('js_trace'))
-{
+if (!function_exists('js_trace')) {
+
     /**
      * Sends backtrace using Javascript (console::log).
      */
@@ -150,67 +151,72 @@ if(!function_exists('js_trace'))
     }
 }
 
+if (!function_exists('cl_dump')) {
 
-if(!function_exists('fb_dump'))
-{
     /**
-     * Dumps given arguments using FirePHP.
+     * Dumps given arguments using Chrome Logger.
      *
      * @param mixed $var
      */
-    function fb_dump($var)
+    function cl_dump($var)
     {
         $vars = func_get_args();
-        foreach($vars as $var)
-        {
-            FB::log($var);
+        foreach ($vars as $var) {
+            if (is_string($var)) {
+                foreach (preg_split('/\R/', $var) as $line) {
+                    ChromePhp::log($line);
+                }
+            } else {
+                ChromePhp::log($var);
+            }
         }
     }
 }
 
-if(!function_exists('fb_dd'))
-{
+if (!function_exists('cl_dd')) {
+
     /**
-     * Dumps given arguments using FirePHP and stops execution.
+     * Dumps given arguments using Chrome Logger and stops execution.
      *
      * @param mixed $var
      */
-    function fb_dd($var = null)
+    function cl_dd($var = null)
     {
         $args = func_get_args();
         if ($args) {
-            call_user_func_array('fb_dump', $args);
+            call_user_func_array('cl_dump', $args);
         }
         die();
     }
 }
 
-if(!function_exists('_fb_dump'))
-{
+if (!function_exists('_cl_dump')) {
+
     /**
-     * Alias to fb_dd().
+     * Alias to cl_dd().
      *
      * @param mixed $var
      */
-    function _fb_dump($var)
+    function _cl_dump($var)
     {
-        call_user_func_array('fb_dd', func_get_args());
+        call_user_func_array('cl_dd', func_get_args());
     }
 }
 
-if(!function_exists('fb_trace'))
-{
+if (!function_exists('cl_trace')) {
+
     /**
-     * Sends backtrace using using FirePHP.
+     * Sends backtrace using using Chrome Logger.
      */
-    function fb_trace()
+    function cl_trace()
     {
-        FB::trace('Backtrace');
+        $e = new Exception;
+        cl_dump($e->getTraceAsString());
     }
 }
 
-if(!function_exists('profile'))
-{
+if (!function_exists('profile')) {
+
     /**
      * Calculates code execution time. Call it twice to get time in seconds between these calls.
      *

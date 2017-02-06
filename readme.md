@@ -1,9 +1,9 @@
-# Debugging tools: Symfony VarDumper and FirePHP in one package
+# Debugging tools: Symfony VarDumper and Chrome Logger in one package
 
 ## Installation
 
 ```
-composer require idealogica/debug:~1.0.0
+composer require idealogica/debug:~1.1.0
 ```
 
 ## How to use?
@@ -37,14 +37,14 @@ Dumps given arguments using Javascript (console::log) and stops execution.
 #### js_trace()
 Sends backtrace using Javascript (console::log).
 
-#### fb_dump()
-Dumps given arguments using FirePHP.
+#### cl_dump()
+Dumps given arguments using Chrome Logger.
 
-#### fb_dd(), _fb_dump()
-Dumps given arguments using FirePHP and stops execution.
+#### cl_dd(), _cl_dump()
+Dumps given arguments using Chrome Logger and stops execution.
 
-#### fb_trace()
-Sends backtrace using FirePHP.
+#### cl_trace()
+Sends backtrace using Chrome Logger.
 
 #### profile()
 Calculates code execution time. Call it twice to get time in seconds between these calls.

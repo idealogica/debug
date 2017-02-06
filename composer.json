@@ -1,7 +1,7 @@
 {
     "name": "idealogica/debug",
-    "description": "Debugging tools: Symfony VarDumper and FirePHP in one package.",
-    "keywords": ["debug", "dumper", "var_dump", "print_r", "debugging", "var-dumper", "firephp"],
+    "description": "Debugging tools: Symfony VarDumper and Chrome Logger in one package.",
+    "keywords": ["debug", "dumper", "var_dump", "print_r", "debugging", "var-dumper", "chrome", "logger", "chrome-logger"],
     "homepage": "https://github.com/idealogica/debug",
     "license": "MIT",
     "authors":
@@ -16,7 +16,7 @@
     {
         "php": ">=5.5.9",
         "symfony/var-dumper": "~3.0.1",
-        "firephp/firephp-core": "~0.4.0"
+        "ccampbell/chromephp": "~4.1.0"
     },
     "require-dev":
     {
