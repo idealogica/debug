@@ -1,5 +1,5 @@
 <?php
-class ContainerTest extends PHPUnit_Framework_TestCase
+class DebugTest extends PHPUnit_Framework_TestCase
 {
     public function testTrace()
     {
@@ -31,5 +31,10 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         $val = profile();
         self::assertTrue(is_numeric($val));
         self::assertNotEquals(0, $val);
+    }
+    
+    public function testDump()
+    {
+        dump('TEST VAR');
     }
 }
