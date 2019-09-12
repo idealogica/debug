@@ -15,7 +15,7 @@
     "require":
     {
         "php": ">=5.5.9",
-        "symfony/var-dumper": "~3.3",
+        "symfony/var-dumper": "~4.3.4",
         "ccampbell/chromephp": "~4.1"
     },
     "require-dev":
